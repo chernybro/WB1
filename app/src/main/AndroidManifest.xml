@@ -20,7 +20,15 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ServiceImpl" />
+        <service android:name=".ServiceImpl"/>
+
+        <receiver
+            android:name=".BroadcastReceiverImpl"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
+
     </application>
 
 </manifest>
