@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chernybro.wb1">
 
+    <!--> разрешение на чтение календаря для провайдера <!-->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WB1">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -18,6 +22,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--> Наши активности для компонентов <!-->
+        <activity android:name=".service.ServiceActivity"/>
+        <activity android:name=".receiver.ReceiverActivity"/>
+        <activity android:name=".provider.ProviderActivity"/>
+
+        <service android:name=".service.ServiceImpl"/>
+
+        <receiver
+            android:name=".receiver.BroadcastReceiverImpl"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
+        <provider
+            android:authorities="com.chernybro.wb1.authority"
+            android:name=".provider.ContentProviderImpl" />
+
+
     </application>
 
 </manifest>

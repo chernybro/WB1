@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WB1</string>
+    <string name="this_is_activity_component">This is activity component!</string>
+    <string name="start_service">Start Service</string>
+    <string name="start_content_provider">Start Content Provider</string>
+    <string name="start_broadcast_receiver">Start Broadcast Receiver</string>
+    <string name="to_service">To Service</string>
+    <string name="to_provider">To provider</string>
+    <string name="to_receiver">To receiver</string>
 </resources>
