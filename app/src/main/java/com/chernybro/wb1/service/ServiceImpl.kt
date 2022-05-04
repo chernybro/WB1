@@ -1,4 +1,4 @@
-package com.chernybro.wb1
+package com.chernybro.wb1.service
 
 import android.app.Service
 import android.content.Intent
@@ -8,7 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import kotlin.random.Random
 
-
+// В сервисе выполняется сортировка пузырьком на 30000 элементов,
+// этот долгий процесс запускаем в отдельном треде
 class ServiceImpl : Service() {
 
     companion object {
@@ -23,7 +24,7 @@ class ServiceImpl : Service() {
         Handler().post(
             Runnable { bubbleSort(
                 IntArray(
-                    size = 20000,
+                    size = 30000,
                     init = { Random.nextInt() }
                 ))
                 Toast.makeText(this, "Сервис закончил работу, сортировка закончена", Toast.LENGTH_SHORT)

@@ -1,22 +1,19 @@
 package com.chernybro.wb1
 
 import android.content.Intent
-import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.chernybro.wb1.databinding.ActivityMainBinding
+import com.chernybro.wb1.provider.ProviderActivity
+import com.chernybro.wb1.receiver.ReceiverActivity
+import com.chernybro.wb1.service.ServiceActivity
 
-
+// Наш первый компонент
+// Здесь будут вызываться остальные компоненты через соответствующие кнопки
 class MainActivity : AppCompatActivity() {
 
-    private var receiver: BroadcastReceiverImpl = BroadcastReceiverImpl()
-
     private lateinit var binding: ActivityMainBinding
-
-    companion object {
-        const val MESSAGE = "com.chernybro.action.message"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             btnService.setOnClickListener {
-                startService(Intent(this@MainActivity, ServiceImpl::class.java))
+                startActivity(Intent(this@MainActivity, ServiceActivity::class.java))
             }
             btnProvider.setOnClickListener {
-
+                startActivity(Intent(this@MainActivity, ProviderActivity::class.java))
             }
             btnReceiver.setOnClickListener {
-                registerReceiver(receiver, IntentFilter(MESSAGE))
-                val intent = Intent(MESSAGE)
-                intent.putExtra("message", "Receiver")
-                sendBroadcast(intent)
+                startActivity(Intent(this@MainActivity, ReceiverActivity::class.java))
             }
         }
     }
