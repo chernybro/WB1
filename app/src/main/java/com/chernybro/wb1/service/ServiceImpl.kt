@@ -10,6 +10,8 @@ import kotlin.random.Random
 
 // В сервисе выполняется сортировка пузырьком на 30000 элементов,
 // этот долгий процесс запускаем в отдельном треде
+
+// Пример использования - музыкальные плееры
 class ServiceImpl : Service() {
 
     companion object {
@@ -22,12 +24,15 @@ class ServiceImpl : Service() {
 
     private fun startLongProcess() {
         Handler().post(
-            Runnable { bubbleSort(
-                IntArray(
-                    size = 30000,
-                    init = { Random.nextInt() }
-                ))
-                Toast.makeText(this, "Сервис закончил работу, сортировка закончена", Toast.LENGTH_SHORT)
+            Runnable {
+                bubbleSort(
+                    IntArray(
+                        size = 30000,
+                        init = { Random.nextInt() }
+                    ))
+                Toast.makeText(this,
+                    "Сервис закончил работу, сортировка закончена",
+                    Toast.LENGTH_SHORT)
                     .show()
                 stopSelf()
             }

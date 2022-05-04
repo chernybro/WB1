@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import com.chernybro.wb1.databinding.ActivityProviderBinding
 
 
-
 // Активити под сервис, по нажатии на кнопку мы в хранилище андроида обратимся к календарю
 // и выведем названия первого event в таблице
 class ProviderActivity : AppCompatActivity() {
@@ -30,7 +29,8 @@ class ProviderActivity : AppCompatActivity() {
 
         binding.apply {
             btnProvider.setOnClickListener {
-                val permission = ContextCompat.checkSelfPermission(this@ProviderActivity, Manifest.permission.READ_CALENDAR)
+                val permission = ContextCompat.checkSelfPermission(this@ProviderActivity,
+                    Manifest.permission.READ_CALENDAR)
                 if (permission == PackageManager.PERMISSION_GRANTED) {
                     loadContacts()
                 } else {
@@ -49,9 +49,9 @@ class ProviderActivity : AppCompatActivity() {
     @SuppressLint("Range")
     private fun loadContacts() {
         var eventTitle = "0"
-        val uri = contentResolver.query(CalendarContract.Events.CONTENT_URI,null, null, null, null)
+        val uri = contentResolver.query(CalendarContract.Events.CONTENT_URI, null, null, null, null)
         if (uri != null) {
-            while (uri.moveToNext()){
+            while (uri.moveToNext()) {
                 eventTitle = uri.getString(uri.getColumnIndex(CalendarContract.Events.TITLE))
 
             }
@@ -65,7 +65,7 @@ class ProviderActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_CODE) {

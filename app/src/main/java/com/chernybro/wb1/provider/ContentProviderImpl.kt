@@ -11,6 +11,8 @@ import android.net.Uri
 
 // Пример реализации провайдера. Если мы реализуем класс, мы можем класть наши данные
 // чтобы другие приложения могли получить данные нашего приложения
+
+// Пример - различные приложения для заметок, контактов.
 class ContentProviderImpl : ContentProvider() {
     private var dbHelper: OurDatabaseHelper? = null
 
@@ -47,7 +49,7 @@ class ContentProviderImpl : ContentProvider() {
         projection: Array<out String>?,
         selection: String?,
         selectionArgs: Array<out String>?,
-        sortOrder: String?
+        sortOrder: String?,
     ): Cursor? {
         val table = getTableName(uri)
         val database = dbHelper?.readableDatabase
@@ -74,7 +76,7 @@ class ContentProviderImpl : ContentProvider() {
 }
 
 class OurDatabaseHelper(
-    context: Context?
+    context: Context?,
 ) : SQLiteOpenHelper(context, "name", null, 1) {
 
     override fun onCreate(p0: SQLiteDatabase?) {

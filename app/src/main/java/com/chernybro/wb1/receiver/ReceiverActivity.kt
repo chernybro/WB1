@@ -10,6 +10,9 @@ import com.chernybro.wb1.databinding.ActivityReceiverBinding
 
 // Активити под ресивер, по нажатии на кнопку будет отправлено широковещательное сообщение
 // Наш ресивер получит его и отобразит на экране
+
+// Пример - приложения, которым нужно знать
+// об изменении состояния подключения к сети, о заряд устройства, смене конфигурации
 class ReceiverActivity : AppCompatActivity() {
 
     private var receiver: BroadcastReceiverImpl = BroadcastReceiverImpl()
